@@ -1,0 +1,53 @@
+select {
+    // styles reset, including removing the default dropdown arrow
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+  
+    // Stack above custom arrow
+    z-index: 1;
+  
+    // Remove focus outline, will add on alternate element
+    outline: none;
+  
+    // styling
+    border: 2px solid var(--svg-secondary-color);
+    border-radius: .2em;
+    padding: 0.1em 0.2em;
+    
+  
+    &::after {
+      content: "";
+      width: 0.8em;
+      height: 0.5em;
+      background-color: var(--svg-active-color);
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    }
+  }
+
+.-select {
+    position: relative;
+    span {
+        position: absolute;
+        display: block;
+        width: 0.8em;
+        height: 0.5em;
+        background-color: var(--svg-active-color);
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        top: 50%;
+        right: 5%;
+        transform: translate(0,-50%);
+        transition: transform .3s ease;
+    }
+
+    
+}

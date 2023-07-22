@@ -1,0 +1,23 @@
+body {
+  --section-height: 3em;
+  
+  --hue: 0turn;
+  --sat: 100%;
+  --light: 50%;
+  
+  --seed-color: hsl(0turn 100% 50%);
+  --border-color: hsl(var(--hue) 10% calc(37.5% + (100% - var(--light)) / 4));
+  --main-bg-color: hsl(var(--hue) 10% 99%);
+  --secondary-bg-color: hsl(var(--hue) 10% 98%);
+  --secondary-color: hsl(var(--hue) 10% 92%);
+  --active-color: hsl(var(--hue) 100% 60%);
+  --svg-secondary-color: hsl(var(--hue) 10% 60%);
+  --svg-active-color: hsl(var(--hue) 20% 30%);
+  
+  $xs: 0;
+  $sm: 576px;
+  $md: 768px;
+  $lg: 992px;
+  $xl: 1200px;
+  $xxl: 1400px;
+}

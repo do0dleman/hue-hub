@@ -1,0 +1,8 @@
+.seed-color-modal {
+    .-container {
+        max-width: 540px;
+        @media(max-width: 992px) {
+            max-width: 480px;
+        }
+    }
+}

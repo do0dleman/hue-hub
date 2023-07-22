@@ -1,0 +1,9 @@
+.-gear-button {
+    transition: transform .3s ease;
+}
+.-gear-button-active {
+    svg{
+        fill: var(--svg-active-color);
+    }
+    transform: rotate(45deg);
+}

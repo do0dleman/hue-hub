@@ -1,0 +1,68 @@
+.-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 2;
+    background-color: hsla(var(--hue) 10% 10% / 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+    .-container {
+        // width: 50%;
+        width: fit-content;
+        margin: 0 .2em;
+        background-color: var(--main-bg-color);
+        height: fit-content;
+        padding: 0.6rem 1rem 1rem;
+        font-size: 1.5em;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &>* {
+            &:not(:last-child) {
+                margin-bottom: 0.6rem;
+            }
+        }
+    }
+
+    button {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        display: block;
+        width: 1.6rem;
+        height: 1.6rem;
+
+        &:hover {
+            span {
+                background-color: var(--svg-active-color);
+            }
+        }
+
+        span {
+            position: absolute;
+            width: 100%;
+            height: .3rem;
+            background-color: var(--svg-secondary-color);
+            border-radius: .2rem;
+            transition: all .2s ease;
+            top: calc(50% - .15rem);
+            left: 0;
+
+            &:nth-child(1) {
+                transform: rotate(45deg)
+            }
+
+            &:nth-child(2) {
+                transform: rotate(-45deg)
+            }
+        }
+    }
+}

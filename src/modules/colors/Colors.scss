@@ -1,0 +1,7 @@
+.color-container {
+    display: flex;
+    height: calc(100dvh - 2 * var(--section-height));
+    @media(max-width: 992px) {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,33 @@
+.-generate-button {
+    // background-color: transparent;
+    background-color: var(--secondary-color);
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: .4rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 .2em 0 hsla(var(--hue), 100%, 30%, .5);
+    font-size: 1.4em;
+
+    span {
+        position: relative;
+        z-index: 1;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 120%;
+        height: 100%;
+        background-color: var(--active-color);
+        top: 0;
+        left: -10%;
+        transition: all .3s ease;
+        transform: skew(20deg, 0deg) translate(-100%, 0);
+    }
+
+    &:hover::after {
+        transform: skew(20deg, 0deg);
+    }
+}

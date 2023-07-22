@@ -1,0 +1,8 @@
+.settings-modal {
+    .-container {
+        padding: 1em 2em;
+        @media(max-width:576px) {
+            padding: 1em;
+        }
+    }
+}

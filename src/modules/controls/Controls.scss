@@ -1,0 +1,15 @@
+.controls {
+    height: var(--section-height);
+    border-top: 1px solid var(--border-color);
+    background-color: var(--secondary-bg-color);
+
+    .-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        & > button:not(:last-child) {
+            margin-right: 1em;
+        }
+    }
+
+}
