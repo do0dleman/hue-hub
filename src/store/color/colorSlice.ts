@@ -8,9 +8,9 @@ const initialColor: [number, number, number] = [Math.random() * 360, Math.random
 
 const initialState = {
     seedColor: initialColor,
-    colors: new Color(initialColor).getColorScheme(COLORS_AMOUNT),
+    colors: new Color(initialColor).getColorScheme(COLORS_AMOUNT).map(color => color.getHslArray()),
     genMethod: genMethods[0] as genMethod,
-    displayType: 'hex' as displayType
+    displayType: 'hex' as displayType,
 }
 
 export const colorSlice = createSlice({
@@ -22,6 +22,7 @@ export const colorSlice = createSlice({
         },
         generateColors: (state) => {
             state.colors = new Color(state.seedColor).getColorScheme(COLORS_AMOUNT, state.genMethod)
+                .map(color => color.getHslArray())
         },
         setGenMethod: (state, action: { payload: genMethod }) => {
             state.genMethod = action.payload

@@ -12,7 +12,7 @@ export default function Colors(props: ColorsProps) {
 
     return (
         <main className="color-container" {...rest}>
-            {colors.map(color => <ColorBlock color={color} key={Math.random()} />)}
+            {colors.map(color => <ColorBlock colorArr={color} key={Math.random()} />)}
         </main>
     )
 }
