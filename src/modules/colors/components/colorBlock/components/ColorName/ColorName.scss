@@ -1,36 +1,46 @@
 .color-name {
     font-size: 1.8em;
     position: absolute;
-    bottom: 10%;
+    top: 85%;
     width: 100%;
     text-align: center;
-    cursor: pointer;
-    user-select: none;
     color: white;
     font-weight: 500;
     @media (max-width: 1200px) {
         font-size: 1.6em;
     }
     @media(max-width: 992px) {
-        bottom: 50%;
+        top: initial;
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         transform: translate(0, 50%);
         font-size: 2em;
     }
     @media(max-width: 576px) {
+        margin-top: .8em;
         font-size: 1.6em;
-    }
-    span {
-        padding: 0.05em 0.2em;
-        border-radius: .2em;
-        transition: background .3s ease;
-    }
-    span:hover {
-        background-color: hsla(0deg, 0%, 100%, .2);
     }
 }
 .color-name-dark {
     color: black;
-    span:hover {
+    .color-value:hover {
         background-color: hsla(0deg, 0%, 0%, .2);
     }
+}
+.color-value {
+    user-select: none;
+    cursor: pointer;
+    width: fit-content;
+    padding: 0.05em 0.2em;
+    border-radius: .2em;
+    transition: background .3s ease;
+}
+.color-value:hover {
+    background-color: hsla(0deg, 0%, 100%, .2);
+}
+.color-label {
+    font-size: .7em;
 }
