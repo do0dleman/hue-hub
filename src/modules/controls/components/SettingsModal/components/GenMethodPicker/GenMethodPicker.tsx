@@ -16,6 +16,9 @@ export default function GenMethodPicker(props: GenMethodPickerProps) {
     function HandleSelectOptionClick(e: React.MouseEvent<HTMLOptionElement, MouseEvent>) {
         setGenMethod((e.target as HTMLOptionElement).value as genMethod)
     }
+    function HandleSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        setGenMethod((e.target as HTMLSelectElement).value as genMethod)
+    }
 
     const genMethod = useGenMethod()
 
@@ -24,7 +27,11 @@ export default function GenMethodPicker(props: GenMethodPickerProps) {
             <h3 className="gen-methods__title">
                 Generation Method
             </h3>
-            <Select className="gen-methods__select" value={genMethod}>
+            <Select
+                className="gen-methods__select"
+                value={genMethod}
+                onChange={HandleSelectChange}
+            >
                 {genMethods.map(method =>
                     <option
                         value={method}
