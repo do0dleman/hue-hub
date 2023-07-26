@@ -13,7 +13,7 @@ export default function logo(props: logoProps) {
             className='colors-logo'
             onClick={HandleLogoClick}
             {...rest}>
-            Colors
+            HueHub
         </span>
     )
 }
