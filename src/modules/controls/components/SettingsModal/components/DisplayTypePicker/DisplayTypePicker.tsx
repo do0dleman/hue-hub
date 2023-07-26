@@ -21,11 +21,19 @@ export default function DisplayTypePicker(props: DisplayTypePickerProps) {
 
     const displayTypes: displayType[] = ["hex", 'rgb', 'hsl']
 
+    function HandleSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        setDisplayType(e.target!.value as displayType)
+    }
+
     return (
         <div className='display-type' {...rest}>
             <h3>Display Type</h3>
 
-            <Select className="gen-methods__select" value={displayType}>
+            <Select
+                className="gen-methods__select"
+                value={displayType}
+                onChange={HandleSelectChange}
+            >
                 {displayTypes.map(type =>
                     <option
                         value={type}
