@@ -5,6 +5,7 @@ import { useDisplayType } from '../../../../../../hooks/useDisplayType'
 import { useGetColorNameByHexQuery } from '../../../../../../store/api/colorNameApi'
 import CopyNotification from '../CopyNotification/CopyNotification'
 import { useState } from 'react'
+import Loading from '../../../../../../components/loading/Loading'
 
 interface ColorNameProps {
     color: Color
@@ -48,7 +49,7 @@ export default function ColorName(props: ColorNameProps) {
                 <CopyToClipboard text={colorValue} onCopy={HandleCopy}>
                     <span className='color-value' onClick={HandleCopy}>{colorValue}</span>
                 </CopyToClipboard>
-                {isLoading ? <></> : <p className='color-label'>{colorLabel}</p>}
+                <p className='color-label'>{isLoading ? <Loading /> : colorLabel}</p>
             </span>
             <CopyNotification copiedValue={colorValue} doShowNotification={doShowNotification} />
         </>
