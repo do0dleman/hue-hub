@@ -19,7 +19,6 @@ export default function ColorName(props: ColorNameProps) {
     const [doShowNotification, setShowNotification] = useState(false)
 
     function HandleCopy() {
-        console.log('qq')
         setShowNotification(true)
         setTimeout(() => { setShowNotification(false) }, 3000)
     }
@@ -44,14 +43,14 @@ export default function ColorName(props: ColorNameProps) {
     ].join(' ')
 
     return (
-        <CopyToClipboard text={colorValue} onCopy={HandleCopy}>
-            <>
-                <span className={classes}>
+        <>
+            <span className={classes}>
+                <CopyToClipboard text={colorValue} onCopy={HandleCopy}>
                     <span className='color-value' onClick={HandleCopy}>{colorValue}</span>
-                    {isLoading ? <></> : <p className='color-label'>{colorLabel}</p>}
-                </span>
-                <CopyNotification copiedValue={colorValue} doShowNotification={doShowNotification} />
-            </>
-        </CopyToClipboard>
+                </CopyToClipboard>
+                {isLoading ? <></> : <p className='color-label'>{colorLabel}</p>}
+            </span>
+            <CopyNotification copiedValue={colorValue} doShowNotification={doShowNotification} />
+        </>
     )
 }

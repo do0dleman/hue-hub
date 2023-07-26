@@ -7,7 +7,6 @@ interface CopyNotificationProps extends React.DetailedHTMLProps<React.HTMLAttrib
 export default function CopyNotification(props: CopyNotificationProps) {
 
     const { copiedValue, doShowNotification, ...rest } = props
-    console.log(doShowNotification)
 
     return (
         <>
