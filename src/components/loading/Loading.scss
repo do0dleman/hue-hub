@@ -1,7 +1,6 @@
 .-loading {
     width: 3em;
     height: 1em;
-    // background-color: #fff;
     display: inline-block;
     position: relative;
     span {
@@ -24,6 +23,11 @@
             animation-delay: 1s;
             right: 0;
         }
+    }
+}
+.-loading-dark {
+    span {
+        background-color: #000;
     }
 }
 @keyframes fadeInOut {

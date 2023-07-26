@@ -49,7 +49,7 @@ export default function ColorName(props: ColorNameProps) {
                 <CopyToClipboard text={colorValue} onCopy={HandleCopy}>
                     <span className='color-value' onClick={HandleCopy}>{colorValue}</span>
                 </CopyToClipboard>
-                <p className='color-label'>{isLoading ? <Loading /> : colorLabel}</p>
+                <p className='color-label'>{isLoading ? <Loading isDark={isDark} /> : colorLabel}</p>
             </span>
             <CopyNotification copiedValue={colorValue} doShowNotification={doShowNotification} />
         </>
