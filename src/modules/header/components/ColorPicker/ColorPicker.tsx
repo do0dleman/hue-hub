@@ -56,7 +56,8 @@ export default function ColorPicker(props: ColorPickerProps) {
         if (input[0] != '#') input = '#' + input
         setHex(input)
         const newColor = new Color(input)
-        if (!isNaN(newColor.h) && !isNaN(newColor.s) && !isNaN(newColor.l) && input.length === 7) setSeedColor(newColor.getHslArray())
+        if (!isNaN(newColor.h) && !isNaN(newColor.s) && !isNaN(newColor.l) && input.length === 7)
+            setSeedColor(newColor.getHslArray())
     }
     return (
         <div className='-color-picker' {...rest}>
@@ -69,7 +70,7 @@ export default function ColorPicker(props: ColorPickerProps) {
                 <div className="color-preview"></div>
             </div>
             <div className="text">
-                <input type="text" value={hex} onChange={HandleHexInputChange} />
+                <input type="text" value={hex.toUpperCase()} onChange={HandleHexInputChange} />
             </div>
         </div>
     )
