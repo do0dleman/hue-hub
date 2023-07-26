@@ -1,0 +1,35 @@
+.copy-notification {
+    background-color: var(--secondary-bg-color);
+    font-size: 1.6em;
+    --botom: -2%;
+    @media(max-width: 768px) {
+        font-size: 1.3em;
+        --botom: -1.4%;
+    }
+    @media(max-width: 576px) {
+        font-size: 1.1em;
+        --botom: 0%;
+        white-space: nowrap;
+    }
+    position: fixed;
+    left: 50%;
+    z-index: 1;
+    padding: 0.2em 0.4em;
+    border-radius: .4em;
+    transform: translate(-50%,-0%);
+    animation: notificationAnimation 3s ease infinite ;
+}
+@keyframes notificationAnimation {
+    0% {
+        bottom: calc(var(--botom));
+    }
+    30% {
+        bottom: calc(var(--botom) + var(--section-height));
+    }
+    70% {
+        bottom: calc(var(--botom) + var(--section-height));
+    }
+    100% {
+        bottom: calc(var(--botom));
+    }
+}

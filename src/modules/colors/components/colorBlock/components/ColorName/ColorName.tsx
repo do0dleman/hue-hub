@@ -3,6 +3,8 @@ import './ColorName.scss'
 import { Color } from 'do0dle-colors'
 import { useDisplayType } from '../../../../../../hooks/useDisplayType'
 import { useGetColorNameByHexQuery } from '../../../../../../store/api/colorNameApi'
+import CopyNotification from '../CopyNotification/CopyNotification'
+import { useState } from 'react'
 
 interface ColorNameProps {
     color: Color
@@ -12,18 +14,26 @@ export default function ColorName(props: ColorNameProps) {
     const { color } = props
 
     const displayType = useDisplayType()
-    const { data: colorLabel, error, isLoading } = useGetColorNameByHexQuery(color.getCssHex())
+    const { data: colorLabel, isLoading } = useGetColorNameByHexQuery(color.getCssHex())
 
-    let colorName
+    const [doShowNotification, setShowNotification] = useState(false)
+
+    function HandleCopy() {
+        console.log('qq')
+        setShowNotification(true)
+        setTimeout(() => { setShowNotification(false) }, 3000)
+    }
+
+    let colorValue
     switch (displayType) {
         case 'hex':
-            colorName = color.getCssHex().toUpperCase()
+            colorValue = color.getCssHex().toUpperCase()
             break;
         case 'rgb':
-            colorName = color.getCssRgb()
+            colorValue = color.getCssRgb()
             break;
         case 'hsl':
-            colorName = color.getCssHsl()
+            colorValue = color.getCssHsl()
             break;
     }
 
@@ -34,11 +44,14 @@ export default function ColorName(props: ColorNameProps) {
     ].join(' ')
 
     return (
-        <CopyToClipboard text={colorName} >
-            <span className={classes}>
-                <span className='color-value'>{colorName}</span>
-                {isLoading ? <></> : <p className='color-label'>{colorLabel}</p>}
-            </span>
+        <CopyToClipboard text={colorValue} onCopy={HandleCopy}>
+            <>
+                <span className={classes}>
+                    <span className='color-value' onClick={HandleCopy}>{colorValue}</span>
+                    {isLoading ? <></> : <p className='color-label'>{colorLabel}</p>}
+                </span>
+                <CopyNotification copiedValue={colorValue} doShowNotification={doShowNotification} />
+            </>
         </CopyToClipboard>
     )
 }

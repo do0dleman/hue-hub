@@ -1,7 +1,9 @@
 .controls {
     height: var(--section-height);
     border-top: 1px solid var(--border-color);
-    background-color: var(--secondary-bg-color);
+    background-color: var(--main-bg-color);
+    position: relative;
+    z-index: 2;
 
     .-container {
         display: flex;
