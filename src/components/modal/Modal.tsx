@@ -13,16 +13,24 @@ export default function Modal(props: ModalProps) {
     function HandleCloseButtonClick() {
         setShowModal(false)
     }
+    function HandleModalBgClick(e: React.MouseEvent<HTMLElement, MouseEvent>) {
+        if ((e.target as HTMLElement).className.slice(-6) === '-modal')
+            setShowModal(false)
+    }
     return (
         <>
-            {showModal ? <section className={`${className} -modal`} {...rest}>
+            {showModal ? <section
+                className={`${className} -modal`}
+                {...rest}
+                onClick={HandleModalBgClick} >
                 <Container>
                     <button onClick={HandleCloseButtonClick}>
                         <span></span><span></span>
                     </button>
                     {children}
                 </Container>
-            </section> : <></>}
+            </section > : <></>
+            }
         </>
     )
 }
