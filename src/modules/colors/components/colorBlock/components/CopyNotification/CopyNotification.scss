@@ -1,14 +1,13 @@
 .copy-notification {
     background-color: var(--secondary-bg-color);
     font-size: 1.6em;
-    --botom: -2%;
+    --botom: -.8em;
     @media(max-width: 768px) {
         font-size: 1.3em;
-        --botom: -1.4%;
     }
     @media(max-width: 576px) {
         font-size: 1.1em;
-        --botom: 0%;
+        --botom: .3em;
         white-space: nowrap;
     }
     position: fixed;
