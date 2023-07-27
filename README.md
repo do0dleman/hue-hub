@@ -32,3 +32,6 @@ This Project uses [Color Name API](https://github.com/meodai/color-names) for co
 * RTK Query
 * SCSS(Sass)
 * do0dle-colors
+
+## License
+See the [LICENSE](https://github.com/do0dleman/forecast/blob/master/LICENSE.md) file for license rights and limitations (GPL3).
