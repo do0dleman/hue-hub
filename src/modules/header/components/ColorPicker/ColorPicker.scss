@@ -39,8 +39,12 @@
 
     .color-preview {
         aspect-ratio: 1/ 1;
+        width: 25%;
         margin-left: 0.6em;
         background-color: var(--seed-color);
+        @media (max-width:576px) {
+            width: 20%;
+        }
     }
 
     .range {
