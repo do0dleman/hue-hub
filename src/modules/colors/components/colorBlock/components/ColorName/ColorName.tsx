@@ -35,9 +35,12 @@ export default function ColorName(props: ColorNameProps) {
         case 'hsl':
             colorValue = color.getCssHsl()
             break;
+        case 'okLCh':
+            colorValue = color.getCssOklch()
+            break;
     }
 
-    const isDark = color.l > 0.5 ? true : false
+    const isDark = color.L > 0.5 ? true : false
     const classes = [
         'color-name',
         isDark ? 'color-name-dark' : ''

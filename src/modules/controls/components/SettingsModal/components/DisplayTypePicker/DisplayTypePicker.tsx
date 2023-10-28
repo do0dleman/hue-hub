@@ -19,7 +19,7 @@ export default function DisplayTypePicker(props: DisplayTypePickerProps) {
 
     const displayType = useDisplayType()
 
-    const displayTypes: displayType[] = ["hex", 'rgb', 'hsl']
+    const displayTypes: displayType[] = ['hex', 'rgb', 'hsl', 'okLCh']
 
     function HandleSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setDisplayType(e.target!.value as displayType)

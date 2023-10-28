@@ -1,1 +1,1 @@
-export type displayType = 'hsl' | 'rgb' | 'hex'
+export type displayType = 'hsl' | 'rgb' | 'hex' | 'okLCh'

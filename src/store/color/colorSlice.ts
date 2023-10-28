@@ -4,11 +4,11 @@ import { displayType } from "./types/displayType";
 
 const COLORS_AMOUNT = 5
 
-const initialColor: [number, number, number] = [Math.random() * 360, Math.random() * 100, Math.random() * 100]
+const initialColor: [number, number, number] = [Math.random(), Math.random(), Math.random() * 360]
 
 const initialState = {
     seedColor: initialColor,
-    colors: new Color(initialColor).getColorScheme(COLORS_AMOUNT).map(color => color.getHslArray()),
+    colors: new Color(initialColor).getColorScheme(COLORS_AMOUNT).map(color => color.getOkLChArray()),
     genMethod: genMethods[0] as genMethod,
     displayType: 'hex' as displayType,
 }
@@ -18,20 +18,22 @@ export const colorSlice = createSlice({
     initialState,
     reducers: {
         generateSeedColor: (state) => {
-            state.seedColor = [Math.random() * 360, Math.random() * 100, Math.random() * 100]
+            state.seedColor = [Math.random(), Math.random(), Math.random() * 360]
         },
         generateColors: (state) => {
             state.colors = new Color(state.seedColor).getColorScheme(COLORS_AMOUNT, state.genMethod)
-                .map(color => color.getHslArray())
+                .map(color => color.getOkLChArray())
         },
         setGenMethod: (state, action: { payload: genMethod }) => {
             state.genMethod = action.payload
         },
         setSeedColor: (state, action: { payload: [number, number, number] }) => {
+            console.log(action.payload)
             const seedColor = new Color(action.payload)
-            document.body.style.setProperty('--hue', `${seedColor.h}deg`)
-            document.body.style.setProperty('--sat', `${Math.round(seedColor.s * 100)}%`)
-            document.body.style.setProperty('--light', `${Math.round(seedColor.l * 100)}%`)
+            const hsl = seedColor.getHslArray()
+            document.body.style.setProperty('--hue', `${hsl[0]}deg`)
+            document.body.style.setProperty('--sat', `${Math.round(hsl[1])}%`)
+            document.body.style.setProperty('--light', `${Math.round(hsl[2])}%`)
             document.body.style.setProperty('--seed-color', seedColor.getCssHsl())
             state.seedColor = action.payload
         },

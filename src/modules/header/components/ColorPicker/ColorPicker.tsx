@@ -22,9 +22,10 @@ export default function ColorPicker(props: ColorPickerProps) {
     const [localSeed, setLocalSeed] = useState(new Color(seedColor))
 
     useEffect(() => {
-        hueRef.current!.value = `${Math.round(seedColor.h)}`
-        satRef.current!.value = `${Math.round(seedColor.s * 100)}`
-        lightRef.current!.value = `${Math.round(seedColor.l * 100)}`
+        const hsl = seedColor.getHslArray()
+        hueRef.current!.value = `${Math.round(hsl[0])}`
+        satRef.current!.value = `${Math.round(hsl[1])}`
+        lightRef.current!.value = `${Math.round(hsl[2])}`
         if (!_.isEqual(seedColor, localSeed)) setLocalSeed(seedColor)
         // setHex(seedColor.getCssHex().toUpperCase())
     }, [seedColor])
@@ -37,27 +38,26 @@ export default function ColorPicker(props: ColorPickerProps) {
     function HandleHueChange(e: React.ChangeEvent<HTMLInputElement>) {
         const newColor = seedColor.getHslArray()
         newColor[0] = +e.target.value
-        setSeedColor(newColor)
+        setSeedColor(new Color(newColor, 'hsl').getOkLChArray())
     }
     function HandleSatChange(e: React.ChangeEvent<HTMLInputElement>) {
         const newColor = seedColor.getHslArray()
         newColor[1] = +e.target.value
-        setSeedColor(newColor)
+        setSeedColor(new Color(newColor, 'hsl').getOkLChArray())
     }
     function HandleLightChange(e: React.ChangeEvent<HTMLInputElement>) {
         const newColor = seedColor.getHslArray()
         newColor[2] = +e.target.value
-        setSeedColor(newColor)
+        setSeedColor(new Color(newColor, 'hsl').getOkLChArray())
     }
     function HandleHexInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log(e.target!.value)
         setHex(e.target!.value)
         let input = e.target!.value
         if (input[0] != '#') input = '#' + input
         setHex(input)
-        const newColor = new Color(input)
-        if (!isNaN(newColor.h) && !isNaN(newColor.s) && !isNaN(newColor.l) && input.length === 7)
-            setSeedColor(newColor.getHslArray())
+        const newHsl = new Color(input).getOkLChArray()
+        if (!isNaN(newHsl[0]) && !isNaN(newHsl[1]) && !isNaN(newHsl[2]) && input.length === 7)
+            setSeedColor(newHsl)
     }
     return (
         <div className='-color-picker' {...rest}>
