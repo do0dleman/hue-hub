@@ -4,7 +4,7 @@ import { displayType } from "./types/displayType";
 
 const COLORS_AMOUNT = 5
 
-const initialColor: [number, number, number] = [Math.random(), Math.random(), Math.random() * 360]
+const initialColor: [number, number, number] = [Math.random() / 2 + .5, Math.random(), Math.random() * 360]
 
 const initialState = {
     seedColor: initialColor,
@@ -28,7 +28,6 @@ export const colorSlice = createSlice({
             state.genMethod = action.payload
         },
         setSeedColor: (state, action: { payload: [number, number, number] }) => {
-            console.log(action.payload)
             const seedColor = new Color(action.payload)
             const hsl = seedColor.getHslArray()
             document.body.style.setProperty('--hue', `${hsl[0]}deg`)
