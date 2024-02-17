@@ -4,6 +4,8 @@ import { Color, ConversionFunctions } from 'do0dle-colors'
 import { useSeedColor } from '../../../../hooks/useSeedColor'
 import { useSetSeedColor } from '../../../../hooks/useSetSeedColor'
 import _ from 'lodash'
+import { useSetSeedColorRandom } from '../../../../hooks/useSetSeedColorRandom'
+import { useIsSeedColorRandom } from '../../../../hooks/useIsSeedColorRandom copy'
 
 interface ColorPickerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement> { }
 export default function ColorPicker(props: ColorPickerProps) {
@@ -13,6 +15,8 @@ export default function ColorPicker(props: ColorPickerProps) {
     const seedColor = useSeedColor()
     const seedHsl = seedColor.getHslArray()
     const setSeedColor = useSetSeedColor()
+    const isSeedColorRandom = useIsSeedColorRandom()
+    const setSeedColorRandom = useSetSeedColorRandom()
 
     const [hex, setHex] = useState<string>('d')
 
@@ -55,6 +59,9 @@ export default function ColorPicker(props: ColorPickerProps) {
             setSeedColor(newOkLCh)
         }
     }
+    function HandleRadomCheckboxChange() {
+        setSeedColorRandom(!isSeedColorRandom)
+    }
     return (
         <div className='-color-picker' {...rest}>
             <div className="sliders">
@@ -66,7 +73,13 @@ export default function ColorPicker(props: ColorPickerProps) {
                 <div className="color-preview"></div>
             </div>
             <div className="text">
-                <input type="text" value={hex.toUpperCase()} onChange={HandleHexInputChange} />
+                <input type="text" className="hex-input"
+                    value={hex.toUpperCase()} onChange={HandleHexInputChange} />
+                <span className='random-checkbox-wrapper'>
+                    <input type="checkbox" className="random-checkbox"
+                        id='random-checkbox' checked={isSeedColorRandom} onChange={HandleRadomCheckboxChange} />
+                    <label htmlFor="random-checkbox">random</label>
+                </span>
             </div>
         </div>
     )

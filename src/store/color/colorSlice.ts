@@ -11,6 +11,7 @@ const initialState = {
     colors: new Color(initialColor).getColorScheme(COLORS_AMOUNT).map(color => color.getOkLChArray()),
     genMethod: genMethods[0] as genMethod,
     displayType: 'hex' as displayType,
+    isSeedColorRandom: true
 }
 
 export const colorSlice = createSlice({
@@ -38,8 +39,11 @@ export const colorSlice = createSlice({
         },
         setDisplayType: (state, action: { payload: displayType }) => {
             state.displayType = action.payload
+        },
+        setIsSeedColorRandom: (state, action: { payload: boolean }) => {
+            state.isSeedColorRandom = action.payload
         }
     }
 })
 
-export const { generateColors, generateSeedColor, setGenMethod, setSeedColor, setDisplayType } = colorSlice.actions
+export const { generateColors, generateSeedColor, setGenMethod, setSeedColor, setDisplayType, setIsSeedColorRandom } = colorSlice.actions
