@@ -3,6 +3,7 @@ import './Header.scss'
 import SeedColorModal from './components/SeedColorModal/SeedColorModal'
 import Container from '../../components/container/Container'
 import Logo from './components/Logo/Logo'
+import GitHubButton from './components/GitHubButton/GitHubButton'
 
 export default function Header() {
 
@@ -16,6 +17,7 @@ export default function Header() {
             <Container>
                 <Logo HandleLogoClick={HandleLogoClick} />
                 <SeedColorModal showModal={showModal} setShowModal={setShowModal} />
+                <GitHubButton />
             </Container>
         </header>
     )
