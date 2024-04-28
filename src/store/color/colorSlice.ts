@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Color, genMethod, genMethods } from "do0dle-colors";
 import { displayType } from "./types/displayType";
+import okLCh from "do0dle-colors/lib/types/okLChType";
 
 const COLORS_AMOUNT = 5
 
-const initialColor: [number, number, number] = [Math.random() / 2 + .5, Math.random(), Math.random() * 360]
+const initialColor: [number, number, number] = [Math.random() * 100 / 2 + 50, Math.random() * 100, Math.random() * 360] as okLCh
 
 const initialState = {
     seedColor: initialColor,
@@ -29,7 +30,7 @@ export const colorSlice = createSlice({
             state.genMethod = action.payload
         },
         setSeedColor: (state, action: { payload: [number, number, number] }) => {
-            const seedColor = new Color(action.payload)
+            const seedColor = new Color(action.payload, 'OkLCh', false)
             const hsl = seedColor.getHslArray()
             document.body.style.setProperty('--hue', `${hsl[0]}deg`)
             document.body.style.setProperty('--sat', `${Math.round(hsl[1])}%`)

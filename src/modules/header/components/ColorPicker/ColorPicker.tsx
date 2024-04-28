@@ -3,14 +3,13 @@ import './ColorPicker.scss'
 import { Color, ConversionFunctions } from 'do0dle-colors'
 import { useSeedColor } from '../../../../hooks/useSeedColor'
 import { useSetSeedColor } from '../../../../hooks/useSetSeedColor'
-import _ from 'lodash'
 import { useSetSeedColorRandom } from '../../../../hooks/useSetSeedColorRandom'
 import { useIsSeedColorRandom } from '../../../../hooks/useIsSeedColorRandom copy'
 
-interface ColorPickerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement> { }
-export default function ColorPicker(props: ColorPickerProps) {
 
-    const { className, ...rest } = props
+export default function ColorPicker(props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement>) {
+
+    const { ...rest } = props
 
     const seedColor = useSeedColor()
     const seedHsl = seedColor.getHslArray()
@@ -32,19 +31,19 @@ export default function ColorPicker(props: ColorPickerProps) {
 
     function HandleHueChange(e: React.ChangeEvent<HTMLInputElement>) {
         setHue(+e.target.value)
-        setSeedColor(new Color([+e.target.value, saturation, lightness], 'hsl').getOkLChArray())
+        setSeedColor(new Color([+e.target.value, saturation, lightness], 'hsl', false).getOkLChArray())
     }
     function HandleSatChange(e: React.ChangeEvent<HTMLInputElement>) {
         setSaturation(+e.target.value)
-        setSeedColor(new Color([hue, +e.target.value, lightness], 'hsl').getOkLChArray())
+        setSeedColor(new Color([hue, +e.target.value, lightness], 'hsl', false).getOkLChArray())
     }
     function HandleLightChange(e: React.ChangeEvent<HTMLInputElement>) {
         setLightness(+e.target.value)
-        setSeedColor(new Color([hue, saturation, +e.target.value], 'hsl').getOkLChArray())
+        setSeedColor(new Color([hue, saturation, +e.target.value], 'hsl', false).getOkLChArray())
     }
     function HandleHexInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setHex(e.target!.value)
-        let input = e.target!.value
+        setHex(e.target.value)
+        let input = e.target.value
         if (input[0] != '#') input = '#' + input
         setHex(input)
 
