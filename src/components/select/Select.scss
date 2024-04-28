@@ -20,10 +20,9 @@ select {
     outline: none;
   
     // styling
-    border: 2px solid var(--svg-secondary-color);
-    border-radius: .2em;
+    border: 1.5px solid var(--svg-secondary-color);
+    border-radius: .15em;
     padding: 0.1em 0.2em;
-    
   
     &::after {
       content: "";
@@ -40,14 +39,28 @@ select {
         position: absolute;
         display: block;
         width: 0.8em;
-        height: 0.5em;
-        background-color: var(--svg-active-color);
-        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        height: 100%;
         top: 50%;
         right: 5%;
         transform: translate(0,-50%);
         transition: transform .3s ease;
+        pointer-events: none;
+        &::after, &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 0.7em;
+          height: 0.4em;
+          background-color: var(--svg-active-color);
+          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+          --offset: 22%;
+        }
+        &::after {
+          top: var(--offset);
+          transform: rotate(180deg);
+        }
+        &::before {
+          bottom: var(--offset);
+        }
     }
-
-    
 }
