@@ -1,7 +1,7 @@
 .color-name {
     font-size: 1.8em;
     position: absolute;
-    top: 85%;
+    bottom: 10%;
     width: 100%;
     text-align: center;
     color: white;
@@ -10,13 +10,13 @@
         font-size: 1.6em;
     }
     @media(max-width: 992px) {
-        top: 26%;
         font-size: 2em;
-    }
-    @media(max-width: 576px) {
-        top: 20%;
-        margin-top: .8em;
-        font-size: 1.6em;
+        position: static;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 }
 .color-name-dark {
