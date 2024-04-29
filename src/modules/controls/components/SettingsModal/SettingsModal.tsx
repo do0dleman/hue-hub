@@ -5,7 +5,7 @@ import './SettingsModal.scss'
 
 interface SettingsModalProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement> {
     showModal: boolean
-    setShowModal: Function
+    setShowModal: (showModal: boolean) => void
 }
 export default function SettingsModal(props: SettingsModalProps) {
 
