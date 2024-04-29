@@ -9,7 +9,7 @@ export default function SvgButton(props: SvgButtonProps) {
     const { className, children, ...rest } = props
 
     return (
-        <button className={`${className} -svg-button`} {...rest}>
+        <button className={`${className ?? ''} -svg-button`} {...rest}>
             {children}
         </button>
     )
