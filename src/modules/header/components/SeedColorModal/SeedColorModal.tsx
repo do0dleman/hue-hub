@@ -5,7 +5,7 @@ import './SeedColorModal.scss'
 interface SeedColorModalProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement> {
     className?: string
     showModal: boolean
-    setShowModal: Function
+    setShowModal: (showModela: boolean) => void
 }
 export default function SeedColorModal(props: SeedColorModalProps) {
 
